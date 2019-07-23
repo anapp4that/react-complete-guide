@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
+
+//import our CSS file so we can leverage classes to get css styles from it
+import classes from './App.module.css';
+
 import Person from './Person/Person';
-import Radium, {StyleRoot} from 'radium';
+//Get Rid of Radium if using CSS Modules
+//import Radium, {StyleRoot} from 'radium';
 
 //Class Implementation
 class App extends Component {
@@ -68,6 +72,8 @@ class App extends Component {
   }
 
   render() {
+
+    //remove if using CSS modules instead of Radium
     //"inline" styling
     const buttonStyle = {
       backgroundColor: 'green',
@@ -98,28 +104,30 @@ class App extends Component {
           })}
         </div>
       )
-      buttonStyle.backgroundColor = 'red';
-      buttonStyle[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+
+      //remove this if not using radium
+      // buttonStyle.backgroundColor = 'red';
+      // buttonStyle[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // }
     }
 
     //create a list to contain html classes
     let htmlClasses = []
     //check if we want to add a class to the list
     if(this.state.persons.length <= 2){
-      htmlClasses.push('red');
+      htmlClasses.push(classes.red);
     }
     if(this.state.persons.length <= 1){
-      htmlClasses.push('bold')
+      htmlClasses.push(classes.bold)
     }
 
     //when passing htmlClasses to our classname, we need to make sure to join them with a space
     return (
       //wrap the app in a style root so Radium can parse the media query in the Persons.js file
-      <StyleRoot>
-        <div className="App">
+      //<StyleRoot>
+        <div className={classes.App}>
           <h1>Hi, I am a React App</h1>
           <p className={htmlClasses.join(' ')}>This is really working!</p>
           <button
@@ -130,7 +138,8 @@ class App extends Component {
           </button>
           {persons}
         </div>
-      </StyleRoot>
+      //we dont need the style root if using CSS modules
+      //</StyleRoot>
     );
 
     //the line below is what the HTMl looking language above gets rendered down too
@@ -139,7 +148,15 @@ class App extends Component {
 }
 
 //Have to wrap out component to get the benifit of pseudo selectors and media queries
-export default Radium(App);
+//export default Radium(App);
+
+//Get Rid of Radium if using CSS Modules
+export default App;
+
+
+
+
+
 
 //Function Implementation
 // const App = (props) => {

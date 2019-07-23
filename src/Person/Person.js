@@ -1,15 +1,21 @@
 import React from 'react';
-import './Person.css';
-import Radium from 'radium';
+import classes from './Person.module.css'
+
+//Get Rid of Radium if using CSS Modules
+//import Radium, {StyleRoot} from 'radium';
+
 
 const person = (props) => {
-    const style={
-        '@media (min-width: 500px)':{
-            width: '450px'
-        }
-    }
+
+    //remove inline style if using CSS module
+    // const style={
+    //     '@media (min-width: 500px)':{
+    //         width: '450px'
+    //     }
+    // }
+
     return (
-        <div className="Person" style={style}>
+        <div className={classes.Person}>
             <p onClick={props.click}>I'm {props.name} and I am {props.age} years old!</p>
             {props.children != null &&
                 <p>{props.children}</p>
@@ -20,4 +26,7 @@ const person = (props) => {
     );
 }
 
-export default Radium(person);
+//export default Radium(person);
+
+//Get Rid of Radium wrapper if using CSS Modules
+export default person
