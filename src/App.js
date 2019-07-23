@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
+import Radium from 'radium'
 
 //Class Implementation
 class App extends Component {
@@ -29,12 +30,14 @@ class App extends Component {
       return p.id === key
     })
 
+    //... is the spread operator
     const person = {
       ...this.state.persons[personIndex]
     }
 
     person.name = event.target.value;
 
+    //... is the spread operator
     const persons = [...this.state.persons]
     persons[personIndex] = person
 
@@ -65,17 +68,22 @@ class App extends Component {
   }
 
   render() {
+    //"inline" styling
     const buttonStyle = {
       backgroundColor: 'green',
       color: 'white',
       font: 'inherit',
       border: '1px solid black',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
 
+    //dynamically render the people in the list, if the button is toggeled to show
     let persons = null
-
     if (this.state.personsShowing) {
       persons = (
         <div>
@@ -91,6 +99,10 @@ class App extends Component {
         </div>
       )
       buttonStyle.backgroundColor = 'red';
+      buttonStyle[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
     }
 
     //create a list to contain html classes
@@ -123,7 +135,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
 
 //Function Implementation
 // const App = (props) => {
