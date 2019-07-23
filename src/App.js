@@ -10,7 +10,8 @@ class App extends Component {
       { id: '6v5s1m6', name: "Kosma", age: 24 },
       { id: 'jh6k5bs', name: "Will", age: 24 }
     ],
-    personsShowing: false
+    personsShowing: false,
+    buttonText: "Show People"
   }
 
   switchNameHandler = (newName) => {
@@ -43,8 +44,17 @@ class App extends Component {
   togglePersons = () => {
     const shown = !(this.state.personsShowing)
 
+    let newButtonText
+    if(shown){
+      newButtonText = "Hide People"
+    }
+    else{
+      newButtonText = "Show People"
+    }
+
     this.setState({
-      personsShowing: shown
+      personsShowing: shown,
+      buttonText: newButtonText
     })
   }
 
@@ -56,9 +66,10 @@ class App extends Component {
 
   render() {
     const buttonStyle = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
-      border: '1px solid blue',
+      border: '1px solid black',
       padding: '8px',
       cursor: 'pointer'
     };
@@ -76,24 +87,38 @@ class App extends Component {
               changed={(event) => this.nameChangedHandler(event, person.id)}
               key={person.id}
             />
-
           })}
         </div>
       )
+      buttonStyle.backgroundColor = 'red';
     }
 
+    //create a list to contain html classes
+    let htmlClasses = []
+    //check if we want to add a class to the list
+    if(this.state.persons.length <= 2){
+      htmlClasses.push('red');
+    }
+    if(this.state.persons.length <= 1){
+      htmlClasses.push('bold')
+    }
+
+    //when passing htmlClasses to our classname, we need to make sure to join them with a space
     return (
       <div className="App">
         <h1>Hi, I am a React App</h1>
+        <p className={htmlClasses.join(' ')}>This is really working!</p>
         <button
           style={buttonStyle}
           onClick={this.togglePersons}
         >
-          Toggle Persons
+          {this.state.buttonText}
         </button>
         {persons}
       </div>
     );
+
+    //the line below is what the HTMl looking language above gets rendered down too
     //return React.createElement('div', null, React.createElement('h1', { className: 'App' }, 'I am a React App!!'))
   }
 }
