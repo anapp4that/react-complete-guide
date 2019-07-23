@@ -71,24 +71,11 @@ class App extends Component {
   }
 
   render() {
-
-    //remove if using CSS modules instead of Radium
-    //"inline" styling
-    const buttonStyle = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid black',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    };
-
     //dynamically render the people in the list, if the button is toggeled to show
     let persons = null
+
+    let btnClass ='';
+
     if (this.state.personsShowing) {
       persons = (
         <div>
@@ -102,7 +89,9 @@ class App extends Component {
             />
           })}
         </div>
-      )
+      );
+
+      btnClass = classes.Red;
     }
 
     //create a list to contain html classes
@@ -121,7 +110,7 @@ class App extends Component {
           <h1>Hi, I am a React App</h1>
           <p className={htmlClasses.join(' ')}>This is really working!</p>
           <button
-            style={buttonStyle}
+            className={btnClass}
             onClick={this.togglePersons}
           >
             {this.state.buttonText}
@@ -136,52 +125,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-
-
-
-//Function Implementation
-// const App = (props) => {
-//   const [personsState, setPersonsState] = useState({
-//     persons: [
-//       {
-//         name: "Shelby",
-//         age: 24
-//       },
-//       {
-//         name: "Kosma",
-//         age: 24
-//       },
-//       {
-//         name: "Will",
-//         age: 24
-//       }
-//     ],
-//   })
-//   const [otherState, setOtherState] = useState("otherState")
-
-//   console.log(personsState, otherState)
-
-//   const switchNameHandler = () => {
-//     setPersonsState({
-//       persons: [
-//         { name: "Will", age: 24 },
-//         { name: "Shelby", age: 24 },
-//         { name: "Kosma", age: 24 }
-//       ]
-//     })
-//   }
-
-//   return (
-//     <div className="App">
-//       <h1>Hi, I am a React App</h1>
-//       <button onClick={switchNameHandler}>Switch Name</button>
-//       <Person name={personsState.persons[0].name} age={personsState.persons[0].age} />
-//       <Person name={personsState.persons[1].name} age={personsState.persons[1].age} />
-//       <Person name={personsState.persons[2].name} age={personsState.persons[2].age} />
-//     </div>
-//   );
-//   //return React.createElement('div', null, React.createElement('h1', { className: 'App' }, 'I am a React App!!'))
-// }
