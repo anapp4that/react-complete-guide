@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person'
-import Radium from 'radium'
+import Person from './Person/Person';
+import Radium, {StyleRoot} from 'radium';
 
 //Class Implementation
 class App extends Component {
@@ -117,17 +117,20 @@ class App extends Component {
 
     //when passing htmlClasses to our classname, we need to make sure to join them with a space
     return (
-      <div className="App">
-        <h1>Hi, I am a React App</h1>
-        <p className={htmlClasses.join(' ')}>This is really working!</p>
-        <button
-          style={buttonStyle}
-          onClick={this.togglePersons}
-        >
-          {this.state.buttonText}
-        </button>
-        {persons}
-      </div>
+      //wrap the app in a style root so Radium can parse the media query in the Persons.js file
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I am a React App</h1>
+          <p className={htmlClasses.join(' ')}>This is really working!</p>
+          <button
+            style={buttonStyle}
+            onClick={this.togglePersons}
+          >
+            {this.state.buttonText}
+          </button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
 
     //the line below is what the HTMl looking language above gets rendered down too
@@ -135,6 +138,7 @@ class App extends Component {
   }
 }
 
+//Have to wrap out component to get the benifit of pseudo selectors and media queries
 export default Radium(App);
 
 //Function Implementation
