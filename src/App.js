@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import Person from './Person/Person';
 
 //import our CSS file so we can leverage classes to get css styles from it
 import classes from './App.module.css';
 
-import Person from './Person/Person';
-//Get Rid of Radium if using CSS Modules
-//import Radium, {StyleRoot} from 'radium';
+
 
 //Class Implementation
 class App extends Component {
@@ -104,13 +103,6 @@ class App extends Component {
           })}
         </div>
       )
-
-      //remove this if not using radium
-      // buttonStyle.backgroundColor = 'red';
-      // buttonStyle[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'black'
-      // }
     }
 
     //create a list to contain html classes
@@ -125,8 +117,6 @@ class App extends Component {
 
     //when passing htmlClasses to our classname, we need to make sure to join them with a space
     return (
-      //wrap the app in a style root so Radium can parse the media query in the Persons.js file
-      //<StyleRoot>
         <div className={classes.App}>
           <h1>Hi, I am a React App</h1>
           <p className={htmlClasses.join(' ')}>This is really working!</p>
@@ -138,8 +128,6 @@ class App extends Component {
           </button>
           {persons}
         </div>
-      //we dont need the style root if using CSS modules
-      //</StyleRoot>
     );
 
     //the line below is what the HTMl looking language above gets rendered down too
@@ -147,10 +135,6 @@ class App extends Component {
   }
 }
 
-//Have to wrap out component to get the benifit of pseudo selectors and media queries
-//export default Radium(App);
-
-//Get Rid of Radium if using CSS Modules
 export default App;
 
 

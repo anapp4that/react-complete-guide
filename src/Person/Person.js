@@ -1,18 +1,7 @@
 import React from 'react';
 import classes from './Person.module.css'
 
-//Get Rid of Radium if using CSS Modules
-//import Radium, {StyleRoot} from 'radium';
-
-
 const person = (props) => {
-
-    //remove inline style if using CSS module
-    // const style={
-    //     '@media (min-width: 500px)':{
-    //         width: '450px'
-    //     }
-    // }
 
     return (
         <div className={classes.Person}>
@@ -26,7 +15,4 @@ const person = (props) => {
     );
 }
 
-//export default Radium(person);
-
-//Get Rid of Radium wrapper if using CSS Modules
 export default person
