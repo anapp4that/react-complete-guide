@@ -1,3 +1,1 @@
-Following the React Complete Guide from Udemy
-
-https://www.udemy.com/react-the-complete-guide-incl-redux/
+Contains all the changes for section 5, started commiting on sub sections after Setting Class Names Dynamically Module
