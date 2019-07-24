@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import Person from './Person/Person'
-
+import Persons from '../componenets/Persons/Persons'
+import Cockpit from '../componenets/Cockpit/Cockpit';
 //import our CSS file so we can leverage classes to get css styles from it
 import classes from './App.module.css'
+
 
 
 
@@ -14,8 +15,7 @@ class App extends Component {
       { id: '6v5s1m6', name: "Kosma", age: 24 },
       { id: 'jh6k5bs', name: "Will", age: 24 }
     ],
-    personsShowing: false,
-    buttonText: "Show People"
+    personsShowing: false
   }
 
   switchNameHandler = (newName) => {
@@ -74,49 +74,27 @@ class App extends Component {
     //dynamically render the people in the list, if the button is toggeled to show
     let persons = null
 
-    let btnClass = ''
 
     if (this.state.personsShowing) {
       persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <Person
-                name={person.name}
-                age={person.age}
-                click={() => this.deletePersonHandler(index)}
-                changed={(event) => this.nameChangedHandler(event, person.id)}
-                key={person.id}
-              />
-            )
-          })}
-        </div>
+        <Persons
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+        />
       )
-
-      btnClass = classes.Red
     }
 
-    //create a list to contain html classes
-    let htmlClasses = [];
-    //check if we want to add a class to the list
-    if (this.state.persons.length <= 2) {
-      htmlClasses.push(classes.red)
-    }
-    if (this.state.persons.length <= 1) {
-      htmlClasses.push(classes.bold)
-    }
+
 
     //when passing htmlClasses to our classname, we need to make sure to join them with a space
     return (
       <div className={classes.App}>
-        <h1>Hi, I am a React App</h1>
-        <p className={htmlClasses.join(' ')}>This is really working!</p>
-        <button
-          className={btnClass}
-          onClick={this.togglePersons}
-        >
-          {this.state.buttonText}
-        </button>
+        <Cockpit
+          shown={this.state.shown}
+          persons={this.state.persons}
+          togglePersons={this.togglePersons}
+        />
         {persons}
       </div>
     )
