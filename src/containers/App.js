@@ -17,7 +17,8 @@ class App extends Component {
       { id: '6v5s1m6', name: "Kosma", age: 24 },
       { id: 'jh6k5bs', name: "Will", age: 24 }
     ],
-    personsShowing: false
+    personsShowing: false,
+    showCockpit: true
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -41,7 +42,6 @@ class App extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[App.js] shouldComponentUpdate');
     return true;
-
   }
 
   componentDidUpdate() {
@@ -121,12 +121,15 @@ class App extends Component {
     //when passing htmlClasses to our classname, we need to make sure to join them with a space
     return (
       <div className={classes.App}>
-        <Cockpit
-          title={this.props.appTitle}
-          shown={this.state.personsShowing}
-          persons={this.state.persons}
-          togglePersons={this.togglePersons}
-        />
+        <button onClick={() => { this.setState({ showCockpit: false }) }}>Remove Cockpit</button>
+        {this.state.showCockpit &&
+          <Cockpit
+            title={this.props.appTitle}
+            shown={this.state.personsShowing}
+            persons={this.state.persons}
+            togglePersons={this.togglePersons}
+          />
+        }
         {persons}
       </div>
     )
