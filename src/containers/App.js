@@ -4,11 +4,13 @@ import Cockpit from '../componenets/Cockpit/Cockpit';
 //import our CSS file so we can leverage classes to get css styles from it
 import classes from './App.module.css'
 
-
-
-
 //Class Implementation
 class App extends Component {
+  constructor(props) {
+    super(props)
+    console.log('[App.js] constructor')
+  }
+
   state = {
     persons: [
       { id: 'asd6asd', name: "Shelby", age: 24 },
@@ -16,6 +18,34 @@ class App extends Component {
       { id: 'jh6k5bs', name: "Will", age: 24 }
     ],
     personsShowing: false
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props)
+    return state;
+  }
+
+  // componentWillMount() {
+  //   console.log('[App.js] componentWillMount')
+  // }
+
+  //Most commonly used life cycle hooks
+  //componentDidMount
+  //shouldComponenetUpdate
+  //componentDidUpdate
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount')
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+
+  }
+
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate')
   }
 
   switchNameHandler = (newName) => {
@@ -71,6 +101,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] render')
     //dynamically render the people in the list, if the button is toggeled to show
     let persons = null
 
@@ -92,7 +123,7 @@ class App extends Component {
       <div className={classes.App}>
         <Cockpit
           title={this.props.appTitle}
-          shown={this.state.shown}
+          shown={this.state.personsShowing}
           persons={this.state.persons}
           togglePersons={this.togglePersons}
         />
