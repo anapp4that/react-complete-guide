@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Person from './Person/Person'
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+
 //import our CSS file so we can leverage classes to get css styles from it
 import classes from './App.module.css'
 
@@ -81,15 +81,13 @@ class App extends Component {
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <ErrorBoundary>
-                <Person
-                  name={person.name}
-                  age={person.age}
-                  click={() => this.deletePersonHandler(index)}
-                  changed={(event) => this.nameChangedHandler(event, person.id)}
-                  key={person.id}
-                />
-              </ErrorBoundary>
+              <Person
+                name={person.name}
+                age={person.age}
+                click={() => this.deletePersonHandler(index)}
+                changed={(event) => this.nameChangedHandler(event, person.id)}
+                key={person.id}
+              />
             )
           })}
         </div>
