@@ -91,6 +91,7 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <Cockpit
+          title={this.props.appTitle}
           shown={this.state.shown}
           persons={this.state.persons}
           togglePersons={this.togglePersons}
@@ -98,9 +99,6 @@ class App extends Component {
         {persons}
       </div>
     )
-
-    //the line below is what the HTMl looking language above gets rendered down too
-    //return React.createElement('div', null, React.createElement('h1', { className: 'App' }, 'I am a React App!!'))
   }
 }
 
