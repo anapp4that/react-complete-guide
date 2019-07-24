@@ -8,9 +8,25 @@ const Cockpit = (props) => {
     //componentDidMount, shouldComponenetUpdate, componentDidUpdate
     //can handle
 
+    //you can have multiple useEffects, each bound to their own property 
+    //or many properties so when bound property changes it will trigger the loop again
+    // useEffect(() => {
+    //     console.log('[Cockpit.js] useEffect')
+    //     setTimeout(() => {
+    //         alert('Saved data to cloud')
+    //     }, 1000)
+    // }, [props.persons])
+
+    //If you need something to run the first time the component is rendered
+    //and you dont havea dependency on a certain field then passing an 
+    //empty array to the 3 argument of useEffect will make it only run once
     useEffect(() => {
         console.log('[Cockpit.js] useEffect')
-    })
+        setTimeout(() => {
+            alert('Saved data to cloud')
+        }, 1000)
+    }, [])
+
 
     //create a list to contain html classes
     let htmlClasses = [];
