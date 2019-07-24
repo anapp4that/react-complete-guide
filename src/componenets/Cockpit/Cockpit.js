@@ -6,12 +6,11 @@ const Cockpit = (props) => {
 
     useEffect(() => {
         console.log('[Cockpit.js] useEffect')
-        const timer = setTimeout(() => {
-            alert('Saved data to cloud!')
+        setTimeout(() => {
+            alert('Saved data to cloud')
         }, 1000)
         return () => {
             console.log('[Cockpit.js] cleanUp')
-            clearTimeout(timer)
         }
     }, [])
 
@@ -34,10 +33,10 @@ const Cockpit = (props) => {
     }
 
     //check if we want to add a class to the list
-    if (props.persons.length <= 2) {
+    if (props.personsLength <= 2) {
         htmlClasses.push(classes.red)
     }
-    if (props.persons.length <= 1) {
+    if (props.personsLength <= 1) {
         htmlClasses.push(classes.bold)
     }
 
@@ -55,4 +54,4 @@ const Cockpit = (props) => {
     )
 }
 
-export default Cockpit
+export default React.memo(Cockpit)
