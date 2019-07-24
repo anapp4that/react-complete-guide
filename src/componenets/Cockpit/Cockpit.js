@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import classes from './Cockpit.module.css'
 
-const cockpit = (props) => {
+const Cockpit = (props) => {
+    //this is run every time something happens with Cockpit
+    //this one function can handle all the behaviors that
+    //componentDidMount, shouldComponenetUpdate, componentDidUpdate
+    //can handle
+
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect')
+    })
+
     //create a list to contain html classes
     let htmlClasses = [];
     let btnClass = ''
@@ -33,4 +42,4 @@ const cockpit = (props) => {
     )
 }
 
-export default cockpit
+export default Cockpit
