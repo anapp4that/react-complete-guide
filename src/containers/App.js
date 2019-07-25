@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
+import WithClass from '../hoc/WithClass'
 //import our CSS file so we can leverage classes to get css styles from it
 import classes from './App.module.css'
 
@@ -120,8 +121,12 @@ class App extends Component {
 
     //when passing htmlClasses to our classname, we need to make sure to join them with a space
     return (
-      <div className={classes.App}>
-        <button onClick={() => { this.setState({ showCockpit: false }) }}>Remove Cockpit</button>
+      <WithClass classes={classes.App}>
+        <button
+          onClick={() => { this.setState({ showCockpit: false }) }}
+        >
+          Remove Cockpit
+        </button>
         {this.state.showCockpit &&
           <Cockpit
             title={this.props.appTitle}
@@ -131,7 +136,7 @@ class App extends Component {
           />
         }
         {persons}
-      </div>
+      </WithClass>
     )
   }
 }
