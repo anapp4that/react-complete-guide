@@ -7,4 +7,6 @@ This course may appear to have commits from two different people.
 Both commiters are me, one Identity is my personal account, and the other
 comes from my work account. 
 
+I started logging my code in git during section 5 of this course. After that I branched on new sections, and commited when I made minor changes during the lectures
+
 https://www.udemy.com/react-the-complete-guide-incl-redux/
