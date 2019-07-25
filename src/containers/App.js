@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Persons from '../componenets/Persons/Persons'
-import Cockpit from '../componenets/Cockpit/Cockpit';
+import Persons from '../components/Persons/Persons'
+import Cockpit from '../components/Cockpit/Cockpit'
 //import our CSS file so we can leverage classes to get css styles from it
 import classes from './App.module.css'
 
