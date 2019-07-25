@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
-import WithClass from '../hoc/WithClass'
+import withClass from '../hoc/WithClass'
 //import our CSS file so we can leverage classes to get css styles from it
 import classes from './App.module.css'
+import Auxiliary from '../hoc/Auxiliary';
 
 //Class Implementation
 class App extends Component {
@@ -121,7 +122,7 @@ class App extends Component {
 
     //when passing htmlClasses to our classname, we need to make sure to join them with a space
     return (
-      <WithClass classes={classes.App}>
+      <Auxiliary>
         <button
           onClick={() => { this.setState({ showCockpit: false }) }}
         >
@@ -136,9 +137,9 @@ class App extends Component {
           />
         }
         {persons}
-      </WithClass>
+      </Auxiliary>
     )
   }
 }
 
-export default App
+export default withClass(App, classes.App);
