@@ -9,50 +9,51 @@ import Person from './Person/Person'
 //the => gets returned automatically
 class Persons extends PureComponent {
 
-        // shouldComponentUpdate(nextProps, nextState) {
+    // shouldComponentUpdate(nextProps, nextState) {
     //     console.log('[Persons.js] shouldComponentUpdate')
-          //     //if the persons prop doest change we dont rerender
-        //     if (nextProps.persons !== this.props.persons
-        //         || nextProps.changed !== this.props.changed
-        //         || nextProps.click !== this.props.click) {
-        //         return true;
-        //     }
-        //     else {
-        //         return false;
-        //     }
-        // }
+    //     //if the persons prop doest change we dont rerender
+    //     if (nextProps.persons !== this.props.persons
+    //         || nextProps.changed !== this.props.changed
+    //         || nextProps.click !== this.props.click) {
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
 
-        getSnapshotBeforeUpdate(prevProps, prevState) {
-            console.log('[Persons.js] getSnapshotBeforeUpdate')
-            return { message: 'Snapshot!' }
-        }
-
-        componentDidUpdate(prevProps, prevState, snapshot) {
-            console.log('[Persons.js] componentDidUpdate')
-            console.log(snapshot);
-        }
-
-        componentWillUnmount() {
-            console.log('[Perons.js componentWillUnmount');
-
-        }
-
-        render() {
-            console.log('[Persons.js] rendering...')
-            return (
-                this.props.persons.map((person, index) => {
-                    return (
-                        <Person
-                            name={person.name}
-                            age={person.age}
-                            click={() => this.props.clicked(index)}
-                            changed={(event) => this.props.changed(event, person.id)}
-                            key={person.id}
-                        />
-                    )
-                })
-            )
-        }
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log('[Persons.js] getSnapshotBeforeUpdate')
+        return { message: 'Snapshot!' }
     }
 
-    export default Persons
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('[Persons.js] componentDidUpdate')
+        console.log(snapshot);
+    }
+
+    componentWillUnmount() {
+        console.log('[Perons.js componentWillUnmount');
+
+    }
+
+    render() {
+        console.log('[Persons.js] rendering...')
+        return (
+            this.props.persons.map((person, index) => {
+                return (
+                    <Person
+                        name={person.name}
+                        age={person.age}
+                        click={() => this.props.clicked(index)}
+                        changed={(event) => this.props.changed(event, person.id)}
+                        key={person.id}
+                        isAuth={this.props.isAuthenticated}
+                    />
+                )
+            })
+        )
+    }
+}
+
+export default Persons
