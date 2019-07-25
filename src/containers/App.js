@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
+import Auxiliary from '../hoc/Auxiliary';
 import withClass from '../hoc/WithClass'
+import AuthContext from '../context/auth-context'
 //import our CSS file so we can leverage classes to get css styles from it
 import classes from './App.module.css'
-import Auxiliary from '../hoc/Auxiliary';
+
 
 //Class Implementation
 class App extends Component {
@@ -143,16 +145,20 @@ class App extends Component {
         >
           Remove Cockpit
         </button>
-        {this.state.showCockpit &&
-          <Cockpit
-            title={this.props.appTitle}
-            shown={this.state.personsShowing}
-            personsLength={this.state.persons.length}
-            togglePersons={this.togglePersons}
-            login={this.loginHandler}
-          />
-        }
-        {persons}
+        <AuthContext.Provider
+          value={{
+            authenticated: this.state.authenticated, login: this.loginHandler
+          }}>
+          {this.state.showCockpit &&
+            <Cockpit
+              title={this.props.appTitle}
+              shown={this.state.personsShowing}
+              personsLength={this.state.persons.length}
+              togglePersons={this.togglePersons}
+            />
+          }
+          {persons}
+        </AuthContext.Provider>
       </Auxiliary>
     )
   }
