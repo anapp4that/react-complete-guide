@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import BuildControl from './BuildControl/BuildControl'
+import BuildControl from './BuildControl/BuildControl';
 
-import classes from './BuildControls.module.css'
+import classes from './BuildControls.module.css';
 
 const controls = [
     { label: 'Salad', type: 'salad' },
@@ -10,7 +10,7 @@ const controls = [
     { label: 'Cheese', type: 'cheese' },
     { label: 'Meat', type: 'meat' }
 
-]
+];
 
 const BuildControls = (props) => {
 
@@ -34,7 +34,7 @@ const BuildControls = (props) => {
                 Order Now
             </button>
         </div>
-    )
+    );
 }
 
-export default BuildControls
+export default BuildControls;

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import Button from '../../UI/Button/Button'
+import Button from '../../UI/Button/Button';
 
 const OrderSummary = (props) => {
     const ingredientSummary = Object.keys(props.ingredients)
@@ -12,7 +12,7 @@ const OrderSummary = (props) => {
                     </span>: {props.ingredients[ingredientKey]}
                 </li>
             )
-        })
+        });
 
 
     return (
@@ -27,7 +27,7 @@ const OrderSummary = (props) => {
             <Button btnType="Danger" onClick={props.canceled}>Cancel</Button>
             <Button btnType="Success" onClick={props.continued}>Continue</Button>
         </Fragment>
-    )
+    );
 };
 
-export default OrderSummary
+export default OrderSummary;

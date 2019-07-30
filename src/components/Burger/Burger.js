@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import Ingredient from './Ingredient/Ingredient'
+import Ingredient from './Ingredient/Ingredient';
 
-import classes from './Burger.module.css'
+import classes from './Burger.module.css';
 
 const Burger = (props) => {
 
@@ -13,7 +13,7 @@ const Burger = (props) => {
             })
         }).reduce((array, element) => {
             return array.concat(element)
-        }, [])
+        }, []);
     if (transformedIngredients.length === 0) {
         transformedIngredients = <p>Add some ingredients!</p>
     }
@@ -23,7 +23,7 @@ const Burger = (props) => {
             {transformedIngredients}
             <Ingredient type="bread-bottom" />
         </div>
-    )
+    );
 }
 
-export default Burger
+export default Burger;

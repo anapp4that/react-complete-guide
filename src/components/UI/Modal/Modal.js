@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react';
 
-import Backdrop from '../Backdrop/Backdrop'
+import Backdrop from '../Backdrop/Backdrop';
 
-import classes from './Modal.module.css'
+import classes from './Modal.module.css';
 
 const Modal = (props) => (
     <Fragment>
@@ -17,6 +17,6 @@ const Modal = (props) => (
             {props.children}
         </div>
     </Fragment>
-)
+);
 
-export default Modal
+export default Modal;

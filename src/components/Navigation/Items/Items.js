@@ -1,8 +1,9 @@
-import React from 'react'
-
-import Item from './Item/Item'
-
-import classes from './Items.module.css'
+//React Imports
+import React from 'react';
+//Component Imports
+import Item from './Item/Item';
+//Style Imports
+import classes from './Items.module.css';
 
 const Items = (props) => (
     <ul className={classes.Items}>
@@ -13,6 +14,6 @@ const Items = (props) => (
             Checkout
         </Item>
     </ul>
-)
+);
 
-export default Items
+export default Items;

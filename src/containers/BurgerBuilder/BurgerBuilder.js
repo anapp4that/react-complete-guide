@@ -1,16 +1,16 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from 'react';
 //import Aux from '../../hoc/Auxiliary'
-import Burger from '../../components/Burger/Burger'
+import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-import Modal from '../../components/UI/Modal/Modal'
-import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
+import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
     cheese: 0.4,
     meat: 1.3,
     bacon: 0.7
-}
+};
 
 
 class BurgerBuilder extends Component {
@@ -24,7 +24,7 @@ class BurgerBuilder extends Component {
         totalPrice: 4,
         purchasable: false,
         purchasing: false
-    }
+    };
 
     updatePurchaseState = (ingredients) => {
         const sum = Object.keys(ingredients)
@@ -38,7 +38,7 @@ class BurgerBuilder extends Component {
         this.setState({ purchasable: sum > 0 })
         console.log(this.state.purchasable);
 
-    }
+    };
 
     addIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type]
@@ -57,7 +57,7 @@ class BurgerBuilder extends Component {
         this.setState({ totalPrice: newPrice, ingredients: updatedIngredients })
 
         this.updatePurchaseState(updatedIngredients)
-    }
+    };
 
     removeIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type]
@@ -79,21 +79,21 @@ class BurgerBuilder extends Component {
 
         this.setState({ totalPrice: newPrice, ingredients: updatedIngredients })
         this.updatePurchaseState(updatedIngredients)
-    }
+    };
 
     purchaseHandler = () => {
         console.log('Clicked');
 
         this.setState({ purchasing: true })
-    }
+    };
 
     cancelPurchaseHandler = () => {
         this.setState({ purchasing: false })
-    }
+    };
 
     continuePurchaseHandler = () => {
         alert('You Purchased your burger')
-    }
+    };
 
     render() {
         const disabledInfo = {
@@ -127,6 +127,6 @@ class BurgerBuilder extends Component {
             //</Aux>
         )
     }
-}
+};
 
-export default BurgerBuilder
+export default BurgerBuilder;

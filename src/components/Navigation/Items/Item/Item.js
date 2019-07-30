@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import classes from './Item.module.css'
+import classes from './Item.module.css';
 
 const Item = (props) => (
     <li className={classes.Item}>
@@ -11,6 +11,6 @@ const Item = (props) => (
             {props.children}
         </a>
     </li>
-)
+);
 
-export default Item
+export default Item;
