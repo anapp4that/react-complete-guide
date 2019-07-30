@@ -1,19 +1,19 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 
-import Button from '../../UI/Button/Button';
+import Button from "../../UI/Button/Button";
 
-const OrderSummary = (props) => {
-    const ingredientSummary = Object.keys(props.ingredients)
-        .map((ingredientKey) => {
-            return (
-                <li key={ingredientKey}>
-                    <span style={{ textTransform: 'capitalize' }}>
-                        {ingredientKey}
-                    </span>: {props.ingredients[ingredientKey]}
-                </li>
-            )
-        });
-
+const OrderSummary = props => {
+    const ingredientSummary = Object.keys(
+        props.ingredients
+    ).map(ingredientKey => {
+        return (
+            <li key={ingredientKey}>
+                <span style={{ textTransform: "capitalize" }}>
+                    {ingredientKey}
+                </span>: {props.ingredients[ingredientKey]}
+            </li>
+        );
+    });
 
     return (
         <Fragment>
@@ -22,10 +22,18 @@ const OrderSummary = (props) => {
             <ul>
                 {ingredientSummary}
             </ul>
-            <p><strong>Total Price: ${props.price}</strong></p>
+            <p>
+                <strong>
+                    Total Price: ${props.price}
+                </strong>
+            </p>
             <p>Continue to Checkout?</p>
-            <Button btnType="Danger" onClick={props.canceled}>Cancel</Button>
-            <Button btnType="Success" onClick={props.continued}>Continue</Button>
+            <Button btnType="Danger" onClick={props.canceled}>
+                Cancel
+            </Button>
+            <Button btnType="Success" onClick={props.continued}>
+                Continue
+            </Button>
         </Fragment>
     );
 };
